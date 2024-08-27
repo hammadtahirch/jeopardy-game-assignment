@@ -54,4 +54,4 @@ npm run build
 ```
 npm test
 ```
-![Images](https://github.com/hammadtahirch/jeopardy-game-assignment/blob/main/manual-test-screenshort/screenshot-localhost_8080-2024_08_27-17_12_42.png)
+![Images](https://github.com/hammadtahirch/jeopardy-game-assignment/blob/main/manual-test-screenshort/screenshot-localhost_8080-2024_08_27-17_12_42.png)(https://github.com/hammadtahirch/jeopardy-game-assignment/blob/main/manual-test-screenshort/screenshot-localhost_8080-2024_08_27-17_11_56.png)(https://github.com/hammadtahirch/jeopardy-game-assignment/blob/main/manual-test-screenshort/screenshot-localhost_8080-2024_08_27-17_11_20.png)(https://github.com/hammadtahirch/jeopardy-game-assignment/blob/main/manual-test-screenshort/Screenshot%202024-08-27%20at%205.04.11%20PM.png)(https://github.com/hammadtahirch/jeopardy-game-assignment/blob/main/manual-test-screenshort/Screenshot%202024-08-27%20at%204.35.18%20PM.png)
