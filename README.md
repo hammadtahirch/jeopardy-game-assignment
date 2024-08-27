@@ -57,7 +57,7 @@ npm test
 
 ## Assignment testing Video
 
-[![Watch the video](https://i.sstatic.net/Vp2cE.png)](https://github.com/hammadtahirch/jeopardy-game-assignment/blob/main/manual-test-screenshort/screencast-localhost_8080-2024_08_27-17_07_47.webm)
+[![Watch the video](https://i.sstatic.net/Vp2cE.png)](https://www.youtube.com/watch?v=V9-m6HjcQKQ)
 
 
 ## Assignment Final Images
