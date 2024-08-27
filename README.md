@@ -60,6 +60,8 @@ npm test
   <source src="[path/to/video.mp4](https://github.com/hammadtahirch/jeopardy-game-assignment/blob/main/manual-test-screenshort/screencast-localhost_8080-2024_08_27-17_07_47.webm)" type="video/webm">
   Your browser does not support the video tag.
 </video>
+[![Watch the video](https://i.sstatic.net/Vp2cE.png)](https://github.com/hammadtahirch/jeopardy-game-assignment/blob/main/manual-test-screenshort/screencast-localhost_8080-2024_08_27-17_07_47.webm)
+
 
 ## Assignment Final Images
 ![Images](https://github.com/hammadtahirch/jeopardy-game-assignment/blob/main/manual-test-screenshort/screenshot-localhost_8080-2024_08_27-17_12_42.png)
