@@ -33,7 +33,9 @@ describe('Toast Plugin', () => {
       close: true,
       gravity: 'top',
       position: 'right',
-      backgroundColor: '#4caf50',
+      style: {
+        background: '#4caf50',
+      }
     });
   });
 
@@ -47,7 +49,9 @@ describe('Toast Plugin', () => {
       close: true,
       gravity: 'top',
       position: 'right',
-      backgroundColor: '#f44336',
+      style: {
+        background: '#f44336',
+      }
     });
   });
 

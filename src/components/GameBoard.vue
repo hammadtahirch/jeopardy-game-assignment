@@ -8,11 +8,9 @@
         <div class="font-bold text-sm mb-2">{{ category.name }}</div>
         <!-- Loop through questions within each category -->
         <div v-for="question in category.questions" :key="question.id">
-          <button
-            :disabled="isQuestionAnswered(question.id)"
+          <button :disabled="isQuestionAnswered(question.id)"
             class="w-full sm:w-16 h-16 mb-1 bg-blue-500 text-white rounded hover:bg-blue-700"
-            @click="selectQuestion(question)"
-          >
+            @click="selectQuestion(question)">
             {{ question.value }}
           </button>
         </div>
@@ -20,60 +18,57 @@
     </div>
 
     <!-- Question Modal -->
-    <question-modal
-      v-if="selectedQuestion"
-      :question="selectedQuestion"
-      :answers="shuffledAnswers"
-      @close="closeModal"
-      @answer="checkAnswer"
-    />
+    <question-modal v-if="selectedQuestion" :question="selectedQuestion" :answers="shuffledAnswers" @close="closeModal"
+      @answer="checkAnswer" />
 
     <!-- Game Scoreboard -->
     <game-scoreboard :score="score" />
   </div>
 </template>
-  
-  <script>
-  import QuestionModal from './QuestionModal.vue';
-  import GameScoreboard from './GameScoreboard.vue';
-  import questionsData from '../assets/questions.json';
-  
-  export default {
-    name: 'GameBoard',
-    components: {
-      QuestionModal,
-      GameScoreboard,
-    },
-    data() {
-      return {
-        categories: [],
-        selectedQuestion: null,
-        selectedAnswers: [],
-        score: 0,
-        answeredQuestionsIds: [],
-      };
-    },
-    computed: {
-      shuffledAnswers() {
+
+<script>
+import QuestionModal from './QuestionModal.vue';
+import GameScoreboard from './GameScoreboard.vue';
+import questionsData from '../assets/questions.json';
+import fakeAnswers from '../assets/fake-answers.json';
+
+export default {
+  name: 'GameBoard',
+  components: {
+    QuestionModal,
+    GameScoreboard,
+  },
+  data() {
+    return {
+      categories: [],
+      selectedQuestion: null,
+      selectedAnswers: [],
+      score: 0,
+      answeredQuestionsIds: [],
+    };
+  },
+  computed: {
+    shuffledAnswers() {
+      try {
         // Returns shuffled answers for the selected question
         if (this.selectedQuestion) {
-          const fakeAnswers = [
-            'Febtober!',
-            "I'm Batman",
-            "I don't know where it went, I'm confused.",
-            'Threeve. A combination of 3 and 5 and you wagered Texas.',
-          ];
-          const allAnswers = [this.selectedQuestion.answer, ...fakeAnswers];
-          return allAnswers.sort(() => Math.random() - 0.5).slice(0, 4);
+          const sortedFakeAnswer = fakeAnswers.sort(() => Math.random() - 0.5).slice(0, 3);
+          const allAnswers = [this.selectedQuestion.answer, ...sortedFakeAnswer];
+          return allAnswers.sort(() => Math.random() - 0.5)
         }
         return [];
-      },
+      } catch (error) {
+        throw new Error('Error shuffling answers:', error);
+      }
+
     },
-    mounted() {
-      this.initializeGameBoard();
-    },
-    methods: {
-      initializeGameBoard() {
+  },
+  mounted() {
+    this.initializeGameBoard();
+  },
+  methods: {
+    initializeGameBoard() {
+      try {
         let counter = 1;
         // Group questions by category
         const grouped = questionsData.reduce((acc, question) => {
@@ -85,15 +80,20 @@
         }, {});
         this.categories = Object.values(grouped);
         this.showMessage("The game board is set! Are you ready to become a quiz champion? 🏆", "success");
-      },
-      selectQuestion(question) {
-        this.selectedQuestion = question;
-      },
-      closeModal() {
-        this.selectedQuestion = null;
-        this.selectedAnswers = [];
-      },
-      checkAnswer(selectedAnswer) {
+      } catch (error) {
+        throw new Error('Error initializing game board:', error);
+      }
+
+    },
+    selectQuestion(question) {
+      this.selectedQuestion = question;
+    },
+    closeModal() {
+      this.selectedQuestion = null;
+      this.selectedAnswers = [];
+    },
+    checkAnswer(selectedAnswer) {
+      try {
         const questionValue = parseInt(this.selectedQuestion.value.replace('$', ''), 10);
         if (selectedAnswer === this.selectedQuestion.answer) {
           this.score += questionValue;
@@ -104,15 +104,18 @@
         }
         this.answeredQuestionsIds.push(this.selectedQuestion.id);
         this.closeModal();
-      },
-      isQuestionAnswered(questionId) {
-        return this.answeredQuestionsIds.includes(questionId);
-      },
-      showMessage(message, type) {
-        // Using Vue toast for showing messages
-        this.$toast(message, type);
-      },
+      } catch (error) {
+        throw new Error('Error checking answer:', error);
+      }
+
     },
-  };
-  </script>
-  
+    isQuestionAnswered(questionId) {
+      return this.answeredQuestionsIds.includes(questionId);
+    },
+    showMessage(message, type) {
+      // Using Vue toast for showing messages
+      this.$toast(message, type);
+    },
+  },
+};
+</script>

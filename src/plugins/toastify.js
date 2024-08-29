@@ -10,7 +10,9 @@ export default {
         close: true,
         gravity: "top",
         position: "right",
-        backgroundColor: type === 'danger' ? '#f44336' : '#4caf50',
+        style: {
+          background: type === 'danger' ? '#f44336' : '#4caf50',
+        }
       }).showToast();
     }
   }
